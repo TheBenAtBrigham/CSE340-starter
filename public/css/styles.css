@@ -4,3 +4,171 @@
 *:after {
   box-sizing: border-box;
 }
+.image-container {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  font: small-caps bold 24px/1 sans-serif;
+}
+
+body {
+  background-image: url("../images/site/small_check.jpg");
+}
+
+button {
+  background-color: #009b9b;
+  color: black; 
+  padding: 10px;
+  border-radius: 5px;
+  text-align:  center;
+}
+
+.overlay-box {
+  position: absolute;
+  top: 0;
+  left: 0px;
+
+  background-color: rgba(255, 255, 255, 0.7); /* White background with 70% opacity */
+  padding: 10px;
+  color: #009b9b; 
+  z-index: 1; 
+}
+.index 
+{
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height:auto;
+  text-align: center;
+
+}
+
+#top-header {
+  
+  display: flex;
+  justify-content: space-between;
+}
+
+.siteName a, .siteName a:visited
+{
+  font: small-caps bold 24px/1 sans-serif;
+  color: black;
+  text-decoration: none;
+}
+
+#tools a, #tools a:visited{
+  color: black;
+  font:
+  1rem "Fira Sans",
+  sans-serif;
+  text-decoration: none;
+}
+
+#wrapper{
+  background-color: white;
+  border: 3px solid #009b9b;
+  border-radius: 10px;
+  margin: 25px;
+  padding: 20px;
+}
+
+
+nav ul {
+  text-align: justify;
+  background-color: black;
+  display: flex;
+  padding: 0;
+}
+nav ul li{
+  flex: 1 0 0;
+  padding: 10px;
+  color: white;
+  list-style: none;
+  text-align: center;
+  
+}
+
+nav ul li:hover{
+  background: white;
+  color: black;
+}
+
+.div-columns{
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+
+}
+
+.reviews {
+  grid-column: 2 / 2; 
+  grid-row: 1; 
+} 
+
+.reviews ul{
+  padding:0;
+  list-style-position: inside;
+} 
+
+.upgrade h2{
+  margin: 20px
+}
+
+
+
+.upgrade ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  padding: 0;
+  text-align: center;
+}
+
+.upgrade ul li{
+  
+  padding: 0px;
+  list-style: none
+}
+
+#upgrade-img {
+  background-color: #009b9b;
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px;
+
+}
+
+#upgrade-img img{
+  height: 80px;
+  width: auto
+}
+
+
+.copyright {
+  padding:2px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    /* Other tablet/mobile styles */
+  }
+  body {
+    background-color: white;
+    background-image: none;
+  }
+  
+  #wrapper{
+    border: 0px;
+    
+    margin: 25px;
+    padding: 20px;
+  }
+
+  .div-columns{
+    display: block;
+
+  
+  }
+
+}
+
