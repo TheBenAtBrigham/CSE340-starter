@@ -47,7 +47,7 @@ Util.buildClassificationGrid = async function (data){
             + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
             grid += '</div>'
             grid += '</li>'
-            grid += '<hr/>'
+            grid += '<hr>'
         })
         grid += '</ul>'
     } else {
