@@ -22,7 +22,7 @@ body {
 }
 footer a, footer a:valid{
   text-decoration: none;
-  color:red;
+  color:#009b9b;
 }
 
 button {
