@@ -13,6 +13,16 @@
 
 body {
   background-image: url("../images/site/small_check.jpg");
+  font: 1rem "Fira Sans", sans-serif;
+}
+.back, .back:visited, .namePrice h2 a, .namePrice h2 a:visited{
+  text-decoration: none;
+  color: #009b9b;
+  font: small-caps bold 20px/1 sans-serif;
+}
+footer a, footer a:valid{
+  text-decoration: none;
+  color:red;
 }
 
 button {
@@ -58,9 +68,7 @@ button {
 
 #tools a, #tools a:visited{
   color: black;
-  font:
-  1rem "Fira Sans",
-  sans-serif;
+  font: 1.2rem "Fira Sans", sans-serif;
   text-decoration: none;
 }
 
@@ -72,6 +80,34 @@ button {
   padding: 20px;
 }
 
+#inv-display{
+  list-style-type: none;
+}
+
+#inv-detail{
+  list-style-type: none;
+}
+
+
+#main-container #inv-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  padding-top :20px;
+}
+
+.v-details-img {
+  display: flex; /* Makes the container a flex container */
+  justify-content: center; /* Horizontally centers the items */
+  align-items: center; 
+  grid-column: 1 / 2; 
+  grid-row: 1; 
+}
+.vehicle-details {
+  grid-column: 2 / 2; 
+  grid-row: 1; 
+  padding:20px;
+
+}
 
 nav ul {
   text-align: justify;
@@ -79,18 +115,19 @@ nav ul {
   display: flex;
   padding: 0;
 }
-nav ul li{
-  flex: 1 0 0;
-  padding: 10px;
-  color: white;
-  list-style: none;
-  text-align: center;
-  
+
+nav ul a:hover {
+ background-color: white;
+ color: black
 }
 
-nav ul li:hover{
-  background: white;
-  color: black;
+nav ul a {
+  flex: 1 0 0;
+  padding: 10px;
+  list-style: none;
+  text-align: center;
+  text-decoration: none;
+  color: white;
 }
 
 .div-columns{
@@ -112,8 +149,6 @@ nav ul li:hover{
 .upgrade h2{
   margin: 20px
 }
-
-
 
 .upgrade ul {
   display: grid;
@@ -168,6 +203,9 @@ nav ul li:hover{
     display: block;
 
   
+  }
+  #main-container #inv-detail{
+    display:block;
   }
 
 }
