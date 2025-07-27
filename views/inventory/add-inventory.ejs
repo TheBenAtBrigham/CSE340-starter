@@ -1,0 +1,43 @@
+<% if (title) { %>
+    <h1><%= title %> to your account</h1>
+    <% } else {res.redirect('/') } %>
+    
+    <%- messages() %>
+    
+    
+    <form id="registerForm" action="/inv/addInventory" method="post">
+        <h3> <%- title %></h3>
+        <label for="classification_id">Classification</label><br>
+        <%- list %>
+        <label for="inv_make">Make</label><br>
+        <input type="text" name="inv_make" id="inv_make" placeholder="Min of 3 characters" minlength="3" required value="<%= locals.inv_make %>"><br>
+      
+        <label for="inv_model">Model</label><br>
+        <input type="text" name="inv_model" id="inv_model" placeholder="Min of 3 characters" minlength="3" required value="<%= locals.inv_model%>"><br>
+      
+        <label for="inv_year">Year</label><br>
+        <input type="text" name="inv_year" id="inv_year" placeholder="YYYY" required pattern="\d{4}" maxlength="4" value="<%= locals.inv_year %>"><br>
+      
+        <label for="inv_description">Description</label><br>
+        <textarea name="inv_description" id="inv_description" placeholder="Enter a description" required><%= locals.inv_description || '' %></textarea><br>
+      
+        <label for="inv_image">Image Path</label><br>
+        <input type="text" name="inv_image" id="inv_image" required value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"><br>
+      
+        <label for="inv_thumbnail">Thumbnail Path</label><br>
+        <input type="text" name="inv_thumbnail" id="inv_thumbnail" required value="<%= locals.inv_thumbnail || '/images/vehicles/no-image-tn.png' %>"><br>
+      
+        <label for="inv_price">Price</label><br>
+        <input type="number" name="inv_price" id="inv_price" placeholder="Enter in US$" required min="0" step="0.01"  value="<%= locals.inv_price %>"><br>
+      
+        <label for="inv_miles">Miles</label><br>
+        <input type="number" name="inv_miles" id="inv_miles" placeholder="Enter the mileage" required min="0" 
+        step="1" value="<%= locals.inv_miles || '' %>"><br>
+      
+        <label for="inv_color">Color</label><br>
+        <input type="text" name="inv_color" id="inv_color" placeholder="Enter the color" required minlength="3"  value="<%= locals.inv_color || '' %>"><br>
+    
+            <div>
+                <button type="submit">SUBMIT</button>
+            </div>
+    </form>

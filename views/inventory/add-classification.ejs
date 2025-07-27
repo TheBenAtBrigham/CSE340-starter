@@ -1,0 +1,13 @@
+<h1><%- title %></h1>
+    
+<%- messages() %>
+
+<form id="registerForm" action="/inv/addClassification" method="post">
+        <h3><label for="classification_name">Create new classification</label></h3><br>
+        <span>Class must be without spaces and special characters</span> 
+        <input type="text" name="classification_name" id="classificationName" required pattern="[A-Za-z0-9]+">
+        <br>
+        <div>
+            <button type="submit">SUBMIT</button>
+        </div>
+</form>
