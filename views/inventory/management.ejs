@@ -4,10 +4,16 @@
     
     <%- messages() %>
     
+<ul>
+    <li><a href="/inv/addClassification" class="add">Add new classification</a></li>
+    <li><a href="/inv/addInventory" class="add">Add new inventory</a></li>
 
-    <a href="/inv/addClassification" class="add">Add new classification</a>
-    <br>
-    <br>
-    <a href="/inv/addInventory" class="add">Add new inventory</a>
-    <br>
+</ul>
+
+<h2>Manage Inventory</h2>
+<p>Choose a classification to see those inventory items.</p>
+<%- classificationSelect %>
+<table id="inventoryDisplay"></table>
+<noscript>Javascript must be enabled to use this page.</noscript>
+<script src="../../js/inventory.js"></script>
     

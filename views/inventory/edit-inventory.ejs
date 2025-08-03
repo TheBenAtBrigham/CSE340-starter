@@ -2,13 +2,15 @@
     <h1><%= title %></h1>
     <% } else {res.redirect('/') } %>
     
-    <%- messages() %>
     
     
-    <form id="registerForm" action="/inv/addInventory" method="post">
+    <form id="updateForm" action="/inv/update/" method="post">
         <h3> <%- title %></h3>
-        <label for="classification_id">Classification</label><br>
-        <%- list %>
+        <label for="classificationList">Classification</label>
+        
+        <%- classificationSelect %>
+        
+    
         <label for="inv_make">Make</label><br>
         <input type="text" name="inv_make" id="inv_make" placeholder="Min of 3 characters" minlength="3" required value="<%= locals.inv_make %>"><br>
       
@@ -36,8 +38,14 @@
       
         <label for="inv_color">Color</label><br>
         <input type="text" name="inv_color" id="inv_color" placeholder="Enter the color" required minlength="3"  value="<%= locals.inv_color || '' %>"><br>
-    
+
             <div>
-                <button type="submit">SUBMIT</button>
+                <button disabled type="submit">Update Vehicle</button>
             </div>
+
+            <input type="hidden" name="inv_id"
+            <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+            <% } %>>
     </form>
+
+    <script src="../../js/inv-update.js"></script>

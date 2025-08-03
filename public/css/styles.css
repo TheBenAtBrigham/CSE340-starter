@@ -11,6 +11,13 @@
   font: small-caps bold 24px/1 sans-serif;
 }
 
+div.loggedin{
+  display: grid;
+  text-align: right;
+  font: 1px;
+
+}
+
 body {
   background-image: url("../images/site/small_check.jpg");
   font: 1rem "Fira Sans", sans-serif;

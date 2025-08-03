@@ -14,12 +14,12 @@ const accountController = require('./controllers/accountController')
 const static = require("./routes/static")
 const expressLayouts = require("express-ejs-layouts")
 const baseController = require("./controllers/baseController")
-const utilities = require("./utilities/index");
+const utilities = require("./utilities/");
 const utils = require("pg/lib/utils");
 const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
-//const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser")
 
 
 const app = express()
@@ -47,6 +47,10 @@ app.use(function(req, res, next){
 })
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.use(cookieParser());
+app.use(utilities.checkJWTToken);
+
 
 /* ***********************
  * View Engine and Templates

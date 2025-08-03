@@ -3,9 +3,9 @@
 <%- messages() %>
 <form id="loginForm" action="/account/login" method="post">
         <label for="account_email">Email</label><br>
-        <input type="email" id="account_email" name="account_email"><br>
+        <input type="email" id="account_email" name="account_email" required value = "<%= locals.account_email %>"><br>
         <label for="account_password">Password</label><br>
-        <input type="password" id="account_password" name="account_password"><br>
+        <input type="password" id="account_password" name="account_password" required><br>
         <div>
             <button>LOGIN</button>
         </div>

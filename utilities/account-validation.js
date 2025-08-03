@@ -45,6 +45,20 @@ validate.registrationRules = () => {
     ]
 }
 
+validate.loginRules = () => {
+    return [
+      body("account_email")
+        .trim()
+        .isEmail()
+        .normalizeEmail()
+        .withMessage("A valid email is required."),
+        
+      body("account_password")
+        .trim()
+        .notEmpty()
+        .withMessage("Password is required."),
+    ];
+  };
 
 validate.checkRegData = async (req, res, next) => {
     const { account_firstname, account_lastname, account_email } = req.body
@@ -65,5 +79,21 @@ validate.checkRegData = async (req, res, next) => {
     }
     next()
 }
+
+validate.checkLoginData = async (req, res, next) => {
+    const { account_email, account_password } = req.body;
+    const errors = validationResult(req);
+    let nav = await utilities.getNav();
+  
+    if (!errors.isEmpty()) {
+      return res.render("account/login", {
+        errors,
+        title: "Login",
+        nav
+      });
+    }
+  
+    next();  
+  };
 
 module.exports = validate

@@ -1,0 +1,34 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {res.redirect('/') } %>
+
+<%- messages() %>
+<p>Confirm your deletion - The deletion is permanent.</p>
+<form action="/inv/delete" method="post">
+    <h3> <%- title %></h3>
+
+    <label for="inv_make">Make</label><br>
+    <input type="text" readonly <% if(locals.inv_make) { %>
+    value="<%= locals.inv_make %>"<% } %>>
+  
+    <label for="inv_model">Model</label><br>
+    <input type="text" readonly <% if(locals.inv_model) { %>
+    value="<%= locals.inv_model %>"<% } %>>
+  
+    <label for="inv_year">Year</label><br>
+    <input type="text" readonly <% if(locals.inv_year) { %>
+        value="<%= locals.inv_year %>"<% } %>>
+  
+    <label for="inv_price">Price</label><br>
+    <input type="text" readonly <% if(locals.inv_price) { %>
+        value="<%= locals.inv_price %>"<% } %>>
+  
+
+        <div>
+            <button type="submit">Delete Vehicle</button>
+        </div>
+
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+        <% } %>>  
+</form>
