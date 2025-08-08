@@ -16,7 +16,12 @@
         <p>Here is a <a href="../inv/">link here.</a></p>
      <% } %>
      
+<% if (locals.accountData.account_type === "Admin") { %>
+    <h3>Modify or delete accounts</h3>
+    <p>Modify or delete accounts <a href="../account/admin">here</a>.</p>
 
+    
+<% } %>
 
 
 

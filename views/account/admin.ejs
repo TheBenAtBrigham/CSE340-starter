@@ -1,0 +1,20 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {res.redirect('/') } %>
+    
+    <%- messages() %>
+    
+    <form id="updateForm" action="/account/delete" method="post" onsubmit="return confirm('Are you sure you want to delete this account?');">
+
+    <label for="account_email">Email</label><br>
+    <input type="email" id="account_email" name="account_email" required value = "<%= locals.account_email %>"><br>
+
+    <div>
+        <button type="submit">Delete</button>
+    </div>
+
+    
+</form>
+<!--table id="accountDisplay"></table>
+<noscript>Javascript must be enabled to use this page.</noscript>
+<script src="../../js/accountlist.js"></script-->

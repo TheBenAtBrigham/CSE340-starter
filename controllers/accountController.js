@@ -198,6 +198,15 @@ async function requireAdmin(req, res, next){
     next()
 }
 
+async function requireGreaterAdmin(req, res, next){
+    const user = res.locals.accountData
+    if (!user || user.account_type !== "Admin") {
+        req.flash("notice", "Access denied.")
+        return res.redirect("/")
+    }
+    next()
+}
+
 async function buildUpdateAccount(req, res) {
     let nav = await utilities.getNav()
     req.flash("notice", 'Please enter your new profile details')
@@ -292,4 +301,50 @@ async function updateAccount(req, res, next) {
 }
 }
 
-module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, verifyAuth, accountOut, requireAdmin, buildUpdateAccount, updateAccount}
+async function buildAdminPage(req, res, next) {
+    let nav = await utilities.getNav()
+    
+    
+    res.render("account/admin", {
+        title: "User Management",
+        nav,
+        errors: null,
+        account_email: null
+
+    })
+}
+
+
+
+async function deleteAccount(req, res, next) {
+    let nav = await utilities.getNav()
+    const { account_email } = req.body;
+
+    
+
+    if (!account_email) {
+        req.flash("notice", "Invalid email address.");
+        return res.redirect('/account/admin');
+    }
+
+    try {
+        const deleteResult = await accModel.deleteAccountByEmail(account_email); // Pass account_id to the model
+
+        if (deleteResult) {
+            req.flash("notice", "The deletion was successful.");
+            res.redirect('/account/admin'); 
+        } else {
+            req.flash("notice", "Sorry, the delete failed.");
+            res.redirect('/account/admin'); 
+        }
+    } catch (error) {
+        console.error(error);
+        req.flash("notice", "There was an error deleting the account.");
+        res.redirect('/account/admin'); 
+    }
+}
+
+
+
+
+module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, verifyAuth, accountOut, requireAdmin, requireGreaterAdmin, buildUpdateAccount, updateAccount, buildAdminPage, deleteAccount}

@@ -1,6 +1,11 @@
 
 const pool = require("../database/index")
 
+async function getAccounts(){
+    const result = await pool.query("SELECT * FROM public.account ORDER BY account_email");
+    //console.log(result);
+    return result;
+}
 
 /* *****************************
 *   Register new account
@@ -77,9 +82,17 @@ async function getAccountById(account_id) {
   }
 }
 
+async function deleteAccountByEmail(account_email) {
+    try {
+        const sql = "DELETE FROM account WHERE account_email = $1 RETURNING *"
+        const data = await pool.query(sql, [account_email])
+        //console.log("Deleting account with email:", account_email);
+        return data.rowCount > 0;
+    } catch (error) {
+        console.error("Delete User Error: ", error);
+        throw new Error("Error deleting account.");
+    }
+    
+}
 
-
-  
-
-
-module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccount}
+module.exports = { getAccounts, registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccount, deleteAccountByEmail}

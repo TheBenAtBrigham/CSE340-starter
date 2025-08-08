@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const accModel = require("../models/account-model")
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
@@ -108,6 +109,26 @@ Util.buildClassificationList = async function (classification_id = null) {
   return classificationList
 }
 
+Util.buildAccountList = async function (account_id = null){
+  let result = await accModel.getAccounts()
+
+  let data = result.rows;
+
+  let accountList = '<select name="account_id" id="accountList" required>';
+
+  data.forEach((row) => {
+    accountList += '<option value="' + row.account_id + '"'
+    if (
+      account_id != null && 
+      row.account_id == account_id
+    ) {
+      accountList += " selected "
+    }
+    accountList += ">" + row.account_email+ "</option>"
+  })
+  accountList += "</select>"
+  return accountList
+}
 
 /* ****************************************
  * Middleware For Handling Errors

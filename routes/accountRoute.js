@@ -56,6 +56,18 @@ router.post("/updated",
     utilities.handleErrors(accountController.updateAccount)
 )
 
+router.get("/admin", 
+    utilities.checkLogin,
+    accountController.requireGreaterAdmin,
+    utilities.handleErrors(accountController.buildAdminPage)
+)
+
+
+router.post("/delete", 
+    utilities.checkLogin,
+    accountController.requireGreaterAdmin, 
+    utilities.handleErrors(accountController.deleteAccount))
+
 
 
 module.exports = router;
